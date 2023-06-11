@@ -11,21 +11,22 @@ def download_picture(url, path):
         file.write(response.content)
 
 
-def get_spacex_pictures(launch_id="latest"):
+def fetch_spacex_pictures(launch_id="latest"):
 
     url = f"https://api.spacexdata.com/v5/launches/{launch_id}"
     response = requests.get(url)
     response.raise_for_status()
 
     pictures = response.json()["links"]["flickr"]["original"]
-    return pictures
+
+    for number, picture in enumerate(pictures):
+        download_picture(picture, f"images/spacex_{number}.jpg")
 
 
 def main():
     Path("images/").mkdir(exist_ok=True)
 
-    for number, picture in enumerate(get_spacex_pictures("5eb87d42ffd86e000604b384")):
-        download_picture(picture, f"images/spacex_{number}.jpg")
+    fetch_spacex_pictures("5eb87d42ffd86e000604b384")
 
 
 if __name__ == "__main__":

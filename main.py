@@ -36,7 +36,8 @@ def fetch_nasa_pictures(token="DEMO_KEY", count=None):
     url = "https://api.nasa.gov/planetary/apod"
     params = {
         "api_key": token,
-        "count": count
+        "count": count,
+        "thumbs": True
     }
 
     response = requests.get(url, params=params)

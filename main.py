@@ -1,4 +1,6 @@
 import requests
+import os
+from urllib import parse
 from pathlib import Path
 
 
@@ -21,6 +23,12 @@ def fetch_spacex_pictures(launch_id="latest"):
 
     for number, picture in enumerate(pictures):
         download_picture(picture, f"images/spacex_{number}.jpg")
+
+
+def get_file_extension(url):
+    url_path = parse.urlsplit(url)
+    file_extension = os.path.splitext(url_path.path)[1]
+    return file_extension
 
 
 def main():

@@ -23,8 +23,43 @@ NASA_TOKEN = 'abc12defg345hi6gk78lmn9op012qrs345tuvw6xyz'
 
 ## Using the program
 
-Currently, you need to manually edit main function in `main.py` to specify which images to download and their number.  
-Run program when ready
+All scripts can be run from command line as is as well as with optional arguments.
+
+Images are downloaded to a separate folder "images" which is automatically generated if it doesn't exist. 
+
+### SpaceX Launch Images
+
+Downloads images from SpaceX launches.
 ```commandline
-python3 main.py
+python3 fetch_spacex_images.py
 ```
+
+Optional arguments:  
+`--id ID` - ID of SpaceX launch. By default, fetches latest launch.
+
+Launches do not always contain photos. In case latest launch doesn't download images, try using a specific launch ID, such as `5eb87d42ffd86e000604b384`.
+
+### NASA - Astronomy Picture of the Day (APOD)
+
+Downloads today's APOD.
+```commandline
+python3 fetch_nasa_apod_images.py
+``` 
+By default, uses demo API key, but using personal API token is recommended.
+
+Optional arguments:  
+`-t, --token` - use personal NASA API Key token instead of the default one  
+`-c COUNT, --count COUNT` - download multiple random APOD's
+
+### NASA - Earth Polychromatic Imaging Camera (EPIC)
+
+Downloads Hi-Res Earth images (at the moment works only with current day's images)
+
+```commandline
+python3 fetch_nasa_epic_images.py
+```
+By default, uses demo API key, but using personal API token is recommended.
+
+Optional arguments:  
+`-t, --token` - use personal NASA API Key token instead of the default one  
+`-c [1-20], --count [1-20]` - number of images to download

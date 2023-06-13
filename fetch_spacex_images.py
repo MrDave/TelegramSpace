@@ -4,9 +4,9 @@ from file_functions import download_image
 
 
 parser = argparse.ArgumentParser(description="Download images from SpaceX's launches")
-parser.add_argument("--id", help="ID of SpaceX launch. Latest by default", default="latest")
+parser.add_argument("--id", help="ID of SpaceX launch. Latest by default", default="latest", type=str)
 args = parser.parse_args()
-launch_id = str(args.id)
+launch_id = args.id
 
 url = f"https://api.spacexdata.com/v5/launches/{launch_id}"
 response = requests.get(url)

@@ -3,6 +3,7 @@ import os
 from urllib import parse
 from pathlib import Path
 from dotenv import load_dotenv
+from contextlib import suppress
 
 
 def download_picture(url, path):
@@ -43,13 +44,14 @@ def fetch_nasa_pictures(token="DEMO_KEY", count=None):
     response = requests.get(url, params=params)
     response.raise_for_status()
 
+    pictures_json = response.json()
+    if type(response.json()) == dict:
+        pictures_json = [response.json()]
     pictures = []
-    for picture in response.json():
-        try:
-            pictures.append(picture["url"])
 
-        except KeyError:
-            continue
+    for picture in pictures_json:
+        with suppress(KeyError):
+            pictures.append(picture.get("thumbnail_url", picture["url"]))
     
     for number, picture in enumerate(pictures):
         extension = get_file_extension(picture)
@@ -62,7 +64,7 @@ def main():
     load_dotenv()
     nasa_token = os.getenv("NASA_TOKEN")
     # fetch_spacex_pictures("5eb87d42ffd86e000604b384")
-    fetch_nasa_pictures(nasa_token, 40)
+    fetch_nasa_pictures(nasa_token, 5)
 
 
 if __name__ == "__main__":

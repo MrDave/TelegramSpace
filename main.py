@@ -68,9 +68,7 @@ def fetch_nasa_epic_images(token, count=5):
     response = requests.get(api_url, params=params)
     response.raise_for_status()
 
-    images = []
-    for i in range(count):
-        images.append(response.json()[i])
+    images = response.json()[:count]
 
     for number, image in enumerate(images):
         image_date = datetime.datetime.fromisoformat(image["date"]).strftime("%Y/%m/%d")

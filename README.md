@@ -1,6 +1,6 @@
 # Telegram Space
 
-A collection of scripts designed to download images from SpaceX launches, NASA's [Astronomy Picture of the Day (APOD)](https://apod.nasa.gov/apod/astropix.html) and [Earth Polychromatic Imaging Camera (EPIC)](https://epic.gsfc.nasa.gov/) and to upload them to a Telegram channel of your choice.
+A collection of scripts designed to download images from SpaceX launches, NASA's [Astronomy Picture of the Day (APOD)](https://apod.nasa.gov/apod/astropix.html) and [Earth Polychromatic Imaging Camera (EPIC)](https://epic.gsfc.nasa.gov/) and to upload them (or other files) to a Telegram channel of your choice.
 
 ## Installing
 
@@ -74,10 +74,11 @@ Optional arguments:
 
 ### Uploading images to Telegram channel
 
+#### All images
 Uploads all images from `images` folder to a selected Telegram channel one by one in a random order. 
 
 ```
-pyhton3 upload_telegram_picture.py
+pyhton3 auto_upload.py
 ```
 
 Optional arguments:  
@@ -87,7 +88,11 @@ It is also possible to change default waiting time (in seconds) by putting a WAI
 ```
 WAIT_TIME = 14400
 ```
-
+#### Single image
+For a single manual upload, use `upload_telegram_picture.py` with file path as an argument
+```commandline
+python3 upload_telegram_picture.py images/image.jpg
+```
 ## Project Goals
 
 The code is written for educational purposes on online-course for web-developers [dvmn.org](https://dvmn.org/).

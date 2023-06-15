@@ -18,33 +18,16 @@ def upload_image(image):
 
 
 def main():
-
-    try:
-        default_time = load_token("WAIT_TIME")
-    except KeyError:
-        default_time = 14400
-
-    parser = argparse.ArgumentParser(
-        description="upload an image from \"images\" folder every 4 hours"
-    )
+    parser = argparse.ArgumentParser()
     parser.add_argument(
-        "-t",
-        "--time",
-        help="set how often (in seconds) an image is uploaded",
-        type=int,
-        default=default_time
+        "file",
+        help="path of file to upload. Example: \"images\\image.jpg\"",
+        type=str
     )
-
     args = parser.parse_args()
-    sending_frequency = args.time
+    image = args.file
 
-    images = get_image_paths()
-
-    while True:
-        shuffle(images)
-        for image in images:
-            upload_image(image)
-            sleep(sending_frequency)
+    upload_image(image)
 
 
 if __name__ == "__main__":

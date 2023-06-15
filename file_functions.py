@@ -25,3 +25,15 @@ def get_file_extension(url):
 def load_token(token):
     load_dotenv()
     return os.environ[token]
+
+
+def get_image_paths():
+
+    image_paths = []
+    for root, dirs, files in os.walk("images/"):
+        for name in files:
+            path = os.path.join(root, name)
+
+            image_paths.append(path)
+
+    return image_paths

@@ -89,10 +89,12 @@ It is also possible to change default waiting time (in seconds) by putting a WAI
 WAIT_TIME = 14400
 ```
 #### Single image
-For a single manual upload, use `upload_telegram_picture.py` with file path as an argument
+For a single manual upload, use `upload_telegram_picture.py`. If no argument given, uploads a random file from the `images` folder
 ```commandline
 python3 upload_telegram_picture.py images/image.jpg
 ```
+Optional arguments:
+`-f FILE, --file FILE` - path of specific file to upload. Example: "images\image.jpg"
 ## Project Goals
 
 The code is written for educational purposes on online-course for web-developers [dvmn.org](https://dvmn.org/).

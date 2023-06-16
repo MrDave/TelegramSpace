@@ -93,7 +93,7 @@ For a single manual upload, use `upload_telegram_picture.py`. If no argument giv
 ```commandline
 python3 upload_telegram_picture.py images/image.jpg
 ```
-Optional arguments:
+Optional arguments:  
 `-f FILE, --file FILE` - path of specific file to upload. Example: "images\image.jpg"
 ## Project Goals
 

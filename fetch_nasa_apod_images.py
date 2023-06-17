@@ -1,12 +1,14 @@
 import argparse
 import requests
-from file_functions import load_token
 from file_functions import download_image
 from file_functions import get_file_extension
 from contextlib import suppress
+import os
+from dotenv import load_dotenv
 
 
 def main():
+    load_dotenv()
     parser = argparse.ArgumentParser(
         description="Download NASA's Astronomy Picture of the Day"
     )
@@ -25,7 +27,7 @@ def main():
     args = parser.parse_args()
     token = "DEMO_KEY"
     if args.token:
-        token = load_token("NASA_TOKEN")
+        token = os.environ["NASA_TOKEN"]
 
     count = args.count
 

@@ -1,8 +1,9 @@
 import telegram
-from file_functions import load_token
 from file_functions import get_image_paths
 import argparse
 from random import choice
+import os
+from dotenv import load_dotenv
 
 
 def upload_image(image, bot_token, chat_id):
@@ -12,8 +13,9 @@ def upload_image(image, bot_token, chat_id):
 
 
 def main():
-    token = load_token("TG_BOT_TOKEN")
-    chat_id = load_token("TG_CHANNEL_ID")
+    load_dotenv()
+    token = os.environ["TG_BOT_TOKEN"]
+    chat_id = os.environ["TG_CHANNEL_ID"]
 
     parser = argparse.ArgumentParser(description="Upload a random photo to Telegram channel")
     parser.add_argument(

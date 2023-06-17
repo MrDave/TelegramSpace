@@ -2,7 +2,6 @@ import requests
 import os
 from urllib import parse
 from pathlib import Path
-from dotenv import load_dotenv
 
 
 def download_image(url, path):
@@ -20,11 +19,6 @@ def get_file_extension(url):
     url_path = parse.urlsplit(url)
     file_extension = os.path.splitext(url_path.path)[1]
     return file_extension
-
-
-def load_token(token):
-    load_dotenv()
-    return os.environ[token]
 
 
 def get_image_paths():

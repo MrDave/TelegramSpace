@@ -1,16 +1,18 @@
 from upload_telegram_picture import upload_image
-from file_functions import load_token
 from file_functions import get_image_paths
 import argparse
 from random import shuffle
 from time import sleep
+import os
+from dotenv import load_dotenv
 
 
 def main():
-    token = load_token("TG_BOT_TOKEN")
-    chat_id = load_token("TG_CHANNEL_ID")
+    load_dotenv()
+    token = os.environ["TG_BOT_TOKEN"]
+    chat_id = os.environ["TG_CHANNEL_ID"]
     try:
-        default_time = load_token("WAIT_TIME")
+        default_time = os.environ["WAIT_TIME"]
     except KeyError:
         default_time = 14400
 

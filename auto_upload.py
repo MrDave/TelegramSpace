@@ -7,6 +7,8 @@ from time import sleep
 
 
 def main():
+    token = load_token("TG_BOT_TOKEN")
+    chat_id = load_token("TG_CHANNEL_ID")
     try:
         default_time = load_token("WAIT_TIME")
     except KeyError:
@@ -31,7 +33,7 @@ def main():
     while True:
         shuffle(images)
         for image in images:
-            upload_image(image)
+            upload_image(image, token, chat_id)
             sleep(sending_frequency)
 
 

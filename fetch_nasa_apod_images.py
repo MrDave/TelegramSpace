@@ -39,12 +39,12 @@ def main():
     response = requests.get(url, params=params)
     response.raise_for_status()
 
-    images_json = response.json()
-    if type(response.json()) == dict:
-        images_json = [response.json()]
+    image_responses = response.json()
+    if type(image_responses) == dict:
+        image_responses = [image_responses]
     images = []
 
-    for image in images_json:
+    for image in image_responses:
         with suppress(KeyError):
             images.append(image.get("thumbnail_url", image["url"]))
 

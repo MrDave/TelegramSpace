@@ -44,12 +44,12 @@ def main():
 
     for number, image in enumerate(images):
         image_date = datetime.datetime.fromisoformat(image["date"]).strftime("%Y/%m/%d")
-        image_url = (
-            f"https://api.nasa.gov/EPIC/archive/natural/"
-            f"{image_date}/png/{image['image']}.png?api_key={token}"
-        )
+        image_url = f"https://api.nasa.gov/EPIC/archive/natural/{image_date}/png/{image['image']}.png"
+        params = {
+            "api_key": {token},
+        }
         path = f"images/nasa_epic_{number}.png"
-        download_image(image_url, path)
+        download_image(image_url, path, params=params)
 
 
 if __name__ == "__main__":

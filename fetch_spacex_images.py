@@ -2,6 +2,7 @@ import argparse
 import requests
 from file_functions import download_image
 
+
 def main():
     parser = argparse.ArgumentParser(
         description="Download images from SpaceX's launches"

@@ -3,7 +3,6 @@ from file_functions import load_token
 from file_functions import get_image_paths
 import argparse
 from random import choice
-from time import sleep
 
 
 def upload_image(image, bot_token, chat_id):

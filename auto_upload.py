@@ -5,29 +5,35 @@ import argparse
 from random import shuffle
 from time import sleep
 
-try:
-    default_time = load_token("WAIT_TIME")
-except KeyError:
-    default_time = 14400
 
-parser = argparse.ArgumentParser(
-    description="upload an image from \"images\" folder every 4 hours"
-)
-parser.add_argument(
-    "-t",
-    "--time",
-    help="set how often (in seconds) an image is uploaded",
-    type=int,
-    default=default_time
-)
+def main():
+    try:
+        default_time = load_token("WAIT_TIME")
+    except KeyError:
+        default_time = 14400
 
-args = parser.parse_args()
-sending_frequency = args.time
+    parser = argparse.ArgumentParser(
+        description="upload an image from \"images\" folder every 4 hours"
+    )
+    parser.add_argument(
+        "-t",
+        "--time",
+        help="set how often (in seconds) an image is uploaded",
+        type=int,
+        default=default_time
+    )
 
-images = get_image_paths()
+    args = parser.parse_args()
+    sending_frequency = args.time
 
-while True:
-    shuffle(images)
-    for image in images:
-        upload_image(image)
-        sleep(sending_frequency)
+    images = get_image_paths()
+
+    while True:
+        shuffle(images)
+        for image in images:
+            upload_image(image)
+            sleep(sending_frequency)
+
+
+if __name__ == "__main__":
+    main()

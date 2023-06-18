@@ -1,10 +1,11 @@
-from upload_telegram_picture import upload_image
-from file_functions import get_image_paths
-import argparse
-from random import shuffle
-from time import sleep
-import os
 from dotenv import load_dotenv
+from file_functions import get_image_paths
+from random import shuffle
+from telegram.error import NetworkError
+from time import sleep
+from upload_telegram_picture import upload_image
+import argparse
+import os
 
 
 def main():
@@ -31,12 +32,20 @@ def main():
     sending_frequency = args.time
 
     images = get_image_paths()
-
+    network_error_counter = 0
     while True:
         shuffle(images)
-        for image in images:
-            upload_image(image, token, chat_id)
-            sleep(sending_frequency)
+        try:
+            for image in images:
+                upload_image(image, token, chat_id)
+                sleep(sending_frequency)
+                network_error_counter = 0
+        except NetworkError:
+            print(f"Network Error! I wait {5 ** network_error_counter} seconds")
+            sleep(5 ** network_error_counter)
+            if network_error_counter < 4:
+                network_error_counter += 1
+            continue
 
 
 if __name__ == "__main__":

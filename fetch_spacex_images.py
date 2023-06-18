@@ -1,6 +1,7 @@
 import argparse
 import requests
 from file_functions import download_image
+from pathlib import PurePath
 
 
 def main():
@@ -23,7 +24,9 @@ def main():
     images = response.json()["links"]["flickr"]["original"]
 
     for number, image in enumerate(images):
-        download_image(image, f"images/spacex_{number}.jpg")
+        path = PurePath("images").joinpath(f"spacex_{number}.jpg")
+        pass
+        download_image(image, path)
 
 
 if __name__ == "__main__":

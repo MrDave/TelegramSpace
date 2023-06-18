@@ -4,6 +4,7 @@ import datetime
 from file_functions import download_image
 import os
 from dotenv import load_dotenv
+from pathlib import PurePath
 
 
 def main():
@@ -48,7 +49,7 @@ def main():
         params = {
             "api_key": {token},
         }
-        path = f"images/nasa_epic_{number}.png"
+        path = PurePath("images").joinpath(f"nasa_epic_{number}.png")
         download_image(image_url, path, params=params)
 
 

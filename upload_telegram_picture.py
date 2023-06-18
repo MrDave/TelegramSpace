@@ -21,7 +21,7 @@ def main():
     parser.add_argument(
         "-f",
         "--file",
-        help="path of specific file to upload. Example: \"images\\image.jpg\"",
+        help="path of specific file to upload. Example: \"images/image.jpg\"",
         type=str
     )
     args = parser.parse_args()

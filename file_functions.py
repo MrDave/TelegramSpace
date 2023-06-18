@@ -9,7 +9,7 @@ def download_image(url, path, params=None):
     response = requests.get(url, params=params)
     response.raise_for_status()
 
-    Path("images/").mkdir(exist_ok=True)
+    Path("images").mkdir(exist_ok=True)
 
     with open(path, "wb") as file:
         file.write(response.content)
@@ -24,7 +24,7 @@ def get_file_extension(url):
 def get_image_paths():
 
     image_paths = []
-    for root, dirs, files in os.walk("images/"):
+    for root, dirs, files in os.walk("images"):
         for name in files:
             path = os.path.join(root, name)
 

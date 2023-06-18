@@ -5,6 +5,7 @@ from file_functions import get_file_extension
 from contextlib import suppress
 import os
 from dotenv import load_dotenv
+from pathlib import PurePath
 
 
 def main():
@@ -52,7 +53,7 @@ def main():
 
     for number, image in enumerate(images):
         extension = get_file_extension(image)
-        path = f"images/nasa_apod_{number}{extension}"
+        path = PurePath("images").joinpath(f"nasa_apod_{number}{extension}")
         download_image(image, path)
 
 

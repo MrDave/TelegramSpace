@@ -25,7 +25,6 @@ def main():
 
     for number, image in enumerate(images):
         path = PurePath("images").joinpath(f"spacex_{number}.jpg")
-        pass
         download_image(image, path)
 
 

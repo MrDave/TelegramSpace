@@ -45,7 +45,6 @@ def main():
             sleep(5 ** network_error_counter)
             if network_error_counter < 4:
                 network_error_counter += 1
-            continue
 
 
 if __name__ == "__main__":

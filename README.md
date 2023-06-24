@@ -14,12 +14,13 @@ pip install -r requirements.txt
 
 Using virtual environment [virtualenv/venv](https://docs.python.org/3/library/venv.html) is recommended for project isolation.
 
-Scripts can be run as is, however to increase NASA's hourly/daily requests limit, obtaining [NASA API Key](https://api.nasa.gov/#signUp) is recommended. 
+Scripts can be run as is, however to increase NASA's hourly/daily requests limit, obtaining [NASA API Key](https://api.nasa.gov/#signUp) is recommended.
 
 Store it in `.env` file in root folder of the project as "NASA_TOKEN"
 ```
 NASA_TOKEN = 'abC12deFg345hi6gk78lMN9op012QRS345tuVw6xyz'
 ```
+If this token isn't specified, NASA services will be used with `DEMO_KEY` token
 
 To upload images to a Telegram channel, bot access token is also needed as well as Telegram channel ID. Put them in the .env file along with the NASA token:
 ```
@@ -55,8 +56,7 @@ python3 fetch_nasa_apod_images.py
 ``` 
 By default, uses demo API key, but using personal API token is recommended.
 
-Optional arguments:  
-`-t, --token` - use personal NASA API Key token instead of the default one  
+Optional arguments:   
 `-c COUNT, --count COUNT` - download multiple random APOD's
 
 ### NASA - Earth Polychromatic Imaging Camera (EPIC)
@@ -68,8 +68,7 @@ python3 fetch_nasa_epic_images.py
 ```
 By default, uses demo API key, but using personal API token is recommended.
 
-Optional arguments:  
-`-t, --token` - use personal NASA API Key token instead of the default one  
+Optional arguments:   
 `-c [1-20], --count [1-20]` - number of images to download
 
 ### Uploading images to Telegram channel

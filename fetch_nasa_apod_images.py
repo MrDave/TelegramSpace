@@ -13,12 +13,7 @@ def main():
     parser = argparse.ArgumentParser(
         description="Download NASA's Astronomy Picture of the Day"
     )
-    parser.add_argument(
-        "-t",
-        "--token",
-        help="use personal NASA API Key token",
-        action="store_true"
-    )
+
     parser.add_argument(
         "-c",
         "--count",
@@ -26,9 +21,7 @@ def main():
         type=int
     )
     args = parser.parse_args()
-    token = "DEMO_KEY"
-    if args.token:
-        token = os.environ["NASA_TOKEN"]
+    token = os.getenv("NASA_TOKEN", default="DEMO_KEY")
 
     count = args.count
 

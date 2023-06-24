@@ -13,12 +13,6 @@ def main():
         description="Download NASA's Earth Polychromatic Imaging Camera image(s)"
     )
     parser.add_argument(
-        "-t",
-        "--token",
-        help="use personal NASA API Key token",
-        action="store_true"
-    )
-    parser.add_argument(
         "-c",
         "--count",
         help="number of images to download",
@@ -28,9 +22,7 @@ def main():
         metavar="[1-20]"
     )
     args = parser.parse_args()
-    token = "DEMO_KEY"
-    if args.token:
-        token = os.environ["NASA_TOKEN"]
+    token = os.getenv("NASA_TOKEN", default="DEMO_KEY")
 
     count = args.count
 

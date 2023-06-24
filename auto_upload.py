@@ -12,10 +12,7 @@ def main():
     load_dotenv()
     token = os.environ["TG_BOT_TOKEN"]
     chat_id = os.environ["TG_CHANNEL_ID"]
-    try:
-        default_time = os.environ["WAIT_TIME"]
-    except KeyError:
-        default_time = 14400
+    default_time = os.getenv("WAIT_TIME", default=14400)
 
     parser = argparse.ArgumentParser(
         description="upload an image from \"images\" folder every 4 hours"

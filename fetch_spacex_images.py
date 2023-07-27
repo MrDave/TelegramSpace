@@ -1,10 +1,14 @@
 import argparse
 import requests
+import os
 from file_functions import download_image
 from pathlib import PurePath
+from dotenv import load_dotenv
 
 
 def main():
+    load_dotenv()
+    save_folder = os.getenv("SAVE_FOLDER", default="images")
     parser = argparse.ArgumentParser(
         description="Download images from SpaceX's launches"
     )
@@ -24,7 +28,7 @@ def main():
     images = response.json()["links"]["flickr"]["original"]
 
     for number, image in enumerate(images):
-        path = PurePath("images").joinpath(f"spacex_{number}.jpg")
+        path = PurePath(save_folder).joinpath(f"spacex_{number}.jpg")
         download_image(image, path)
 
 

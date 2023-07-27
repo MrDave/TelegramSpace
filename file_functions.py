@@ -6,10 +6,12 @@ from pathlib import Path
 
 def download_image(url, path, params=None):
 
+    save_folder = os.getenv("SAVE_FOLDER", default="images")
+
     response = requests.get(url, params=params)
     response.raise_for_status()
 
-    Path("images").mkdir(exist_ok=True)
+    Path(save_folder).mkdir(exist_ok=True, parents=True)
 
     with open(path, "wb") as file:
         file.write(response.content)
@@ -22,9 +24,10 @@ def get_file_extension(url):
 
 
 def get_image_paths():
+    save_folder = os.getenv("SAVE_FOLDER", default="images")
 
     image_paths = []
-    for root, dirs, files in os.walk("images"):
+    for root, dirs, files in os.walk(save_folder):
         for name in files:
             path = os.path.join(root, name)
 

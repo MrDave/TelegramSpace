@@ -38,7 +38,7 @@ def main():
     response.raise_for_status()
 
     image_responses = response.json()
-    if type(image_responses) == dict:
+    if isinstance(image_responses,dict):
         image_responses = [image_responses]
     images = []
 

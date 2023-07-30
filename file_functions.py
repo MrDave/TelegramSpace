@@ -4,10 +4,7 @@ from urllib import parse
 from pathlib import Path
 
 
-def download_image(url, path, params=None):
-
-    save_folder = os.getenv("SAVE_FOLDER", default="images")
-
+def download_image(url, path, save_folder, params=None):
     response = requests.get(url, params=params)
     response.raise_for_status()
 
@@ -23,9 +20,7 @@ def get_file_extension(url):
     return file_extension
 
 
-def get_image_paths():
-    save_folder = os.getenv("SAVE_FOLDER", default="images")
-
+def get_image_paths(save_folder):
     image_paths = []
     for root, dirs, files in os.walk(save_folder):
         for name in files:

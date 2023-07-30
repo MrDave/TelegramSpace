@@ -38,7 +38,7 @@ def main():
     response.raise_for_status()
 
     image_responses = response.json()
-    if isinstance(image_responses,dict):
+    if isinstance(image_responses, dict):
         image_responses = [image_responses]
     images = []
 
@@ -49,7 +49,7 @@ def main():
     for number, image in enumerate(images):
         extension = get_file_extension(image)
         path = PurePath(save_folder).joinpath(f"nasa_apod_{number}{extension}")
-        download_image(image, path)
+        download_image(image, path, save_folder)
 
 
 if __name__ == "__main__":

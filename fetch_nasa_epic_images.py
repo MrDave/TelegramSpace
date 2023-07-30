@@ -44,7 +44,7 @@ def main():
             "api_key": {token},
         }
         path = PurePath(save_folder).joinpath(f"nasa_epic_{number}.png")
-        download_image(image_url, path, params=params)
+        download_image(image_url, path, save_folder, params=params)
 
 
 if __name__ == "__main__":

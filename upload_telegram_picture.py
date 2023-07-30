@@ -16,6 +16,7 @@ def main():
     load_dotenv()
     token = os.environ["TG_BOT_TOKEN"]
     chat_id = os.environ["TG_CHANNEL_ID"]
+    save_folder = os.getenv("SAVE_FOLDER", default="images")
 
     parser = argparse.ArgumentParser(description="Upload a random photo to Telegram channel")
     parser.add_argument(
@@ -28,7 +29,7 @@ def main():
     image = args.file
 
     if image is None:
-        images = get_image_paths()
+        images = get_image_paths(save_folder)
         image = choice(images)
     upload_image(image, token, chat_id)
 

@@ -13,6 +13,7 @@ def main():
     token = os.environ["TG_BOT_TOKEN"]
     chat_id = os.environ["TG_CHANNEL_ID"]
     default_time = os.getenv("WAIT_TIME", default=14400)
+    save_folder = os.getenv("SAVE_FOLDER", default="images")
 
     parser = argparse.ArgumentParser(
         description="upload an image from \"images\" folder every 4 hours"
@@ -28,7 +29,7 @@ def main():
     args = parser.parse_args()
     sending_frequency = args.time
 
-    images = get_image_paths()
+    images = get_image_paths(save_folder)
     network_error_counter = 0
     while True:
         shuffle(images)

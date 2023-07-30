@@ -29,7 +29,7 @@ def main():
 
     for number, image in enumerate(images):
         path = PurePath(save_folder).joinpath(f"spacex_{number}.jpg")
-        download_image(image, path)
+        download_image(image, path, save_folder)
 
 
 if __name__ == "__main__":

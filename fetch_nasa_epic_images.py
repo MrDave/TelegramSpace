@@ -26,7 +26,7 @@ def main():
 
     count = args.count
 
-    save_folder = os.getenv("SAVE_FOLDER", default="images")
+    downloading_path = os.getenv("DOWNLOADING_PATH", default="images")
 
     api_url = "https://api.nasa.gov/EPIC/api/natural"
     params = {
@@ -43,8 +43,8 @@ def main():
         params = {
             "api_key": {token},
         }
-        path = PurePath(save_folder).joinpath(f"nasa_epic_{number}.png")
-        download_image(image_url, path, save_folder, params=params)
+        path = PurePath(downloading_path).joinpath(f"nasa_epic_{number}.png")
+        download_image(image_url, path, downloading_path, params=params)
 
 
 if __name__ == "__main__":

@@ -4,11 +4,11 @@ from urllib import parse
 from pathlib import Path
 
 
-def download_image(url, path, save_folder, params=None):
+def download_image(url, path, downloading_path, params=None):
     response = requests.get(url, params=params)
     response.raise_for_status()
 
-    Path(save_folder).mkdir(exist_ok=True, parents=True)
+    Path(downloading_path).mkdir(exist_ok=True, parents=True)
 
     with open(path, "wb") as file:
         file.write(response.content)
@@ -20,9 +20,9 @@ def get_file_extension(url):
     return file_extension
 
 
-def get_image_paths(save_folder):
+def get_image_paths(downloading_path):
     image_paths = []
-    for root, dirs, files in os.walk(save_folder):
+    for root, dirs, files in os.walk(downloading_path):
         for name in files:
             path = os.path.join(root, name)
 

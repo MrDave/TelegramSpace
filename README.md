@@ -34,9 +34,9 @@ Bot token can be obtained [via BotFather bot](https://t.me/BotFather) and the bo
 
 All scripts can be run from command line "as is" as well as with optional arguments.
 
-Images are downloaded to a separate folder "images" which is automatically generated if it doesn't exist. To change the save folder, write your preferred path in `.env` file under `SAVE_FOLDER` header.
+Images are downloaded to a separate folder "images" which is automatically generated if it doesn't exist. To change the save folder, write your preferred path in `.env` file under `DOWNLOADING_PATH` header.
 ```
-SAVE_FOLDER = 'another_folder/next_folder'
+DOWNLOADING_PATH = 'another_folder/next_folder'
 ```
 
 ### SpaceX Launch Images

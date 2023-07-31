@@ -25,7 +25,7 @@ def main():
 
     count = args.count
 
-    save_folder = os.getenv("SAVE_FOLDER", default="images")
+    downloading_path = os.getenv("DOWNLOADING_PATH", default="images")
 
     url = "https://api.nasa.gov/planetary/apod"
     params = {
@@ -48,8 +48,8 @@ def main():
 
     for number, image in enumerate(images):
         extension = get_file_extension(image)
-        path = PurePath(save_folder).joinpath(f"nasa_apod_{number}{extension}")
-        download_image(image, path, save_folder)
+        path = PurePath(downloading_path).joinpath(f"nasa_apod_{number}{extension}")
+        download_image(image, path, downloading_path)
 
 
 if __name__ == "__main__":
